@@ -1,7 +1,11 @@
 'use client'
-import React, { useState } from 'react';
-import { Background } from '../components/Fondo/page';
-const choices = ["rock", "paper", "scissors", "fire", "ice", "air", "water"];
+import React, { useState, useEffect } from 'react';
+import './page.css';
+import Background from '../components/Fondo/page';
+import Question from '../components/Botóninterrogación/page';
+import ImageWithText from '../components/Botones/page';
+
+const choices = ["rock", "paper", "scissors", "fire", "ice", "wind", "water"];
 
 function randomPlay() {
     const index = Math.floor(Math.random() * choices.length);
@@ -10,78 +14,101 @@ function randomPlay() {
 
 function determineWinner(player, computer) {
     if (player === computer) {
-        return `Tie. Both chose ${player}.`;
+        return `Tie`;
     } else if (
-        (player === "fire" && (computer === "rock" || computer === "scissors")) ||
-        (player === "water" && (computer === "fire" || computer === "ice")) ||
-        (player === "ice" && (computer === "rock" || computer === "scissors")) ||
-        (player === "scissors" && (computer === "paper" || computer === "water")) ||
-        (player === "paper" && (computer === "rock" || computer === "air")) ||
-        (player === "air" && (computer === "fire" || computer === "water")) ||
-        (player === "rock" && (computer === "scissors" || computer === "water"))
+        (player === "fire" && (computer === "paper" || computer === "scissors" || computer === "ice")) ||
+        (player === "water" && (computer === "fire" || computer === "rock" || computer === "scissors")) ||
+        (player === "ice" && (computer === "paper" || computer === "wind" || computer === "water")) ||
+        (player === "scissors" && (computer === "ice" || computer === "paper" || computer === "wind")) ||
+        (player === "paper" && (computer === "wind" || computer === "water" || computer === "rock")) ||
+        (player === "wind" && (computer === "fire" || computer === "water" || computer === "rock")) ||
+        (player === "rock" && (computer === "scissors" || computer === "fire" || computer === "ice"))
     ) {
-        return `You win! ${player} beats ${computer}.`;
+        return `You win!`;
     } else {
-        return `You lose. ${computer} beats ${player}.`;
+        return `You lose`;
     }
 }
 
-export default function Home() {
-    const [playerChoice, setPlayerChoice] = useState(null);
-    const [computerChoice, setComputerChoice] = useState(null);
-    const [result, setResult] = useState('');
+const Inicio = () => {
+  const [selectedChoice, setSelectedChoice] = useState(null);
+  const [playerChoice, setPlayerChoice] = useState(null);
+  const [computerChoice, setComputerChoice] = useState(null);
+  const [result, setResult] = useState('');
+  const [countdown, setCountdown] = useState(3);
+  const [showComputerChoice, setShowComputerChoice] = useState(false); // Nuevo estado para mostrar elección de CPU
+  const [startGame, setStartGame] = useState(false);
 
-    const selectChoice = (choice) => {
-        setPlayerChoice(choice);
-        setResult(`You chose: ${choice}`);
-        setComputerChoice(randomPlay()); // Elegir elección aleatoria para la CPU
+  const handleChoiceSelect = (choice) => {
+      setSelectedChoice(choice);
+  };
 
-        if (playerChoice !== null) {
-            playGame();
-        }
-    };
+  const selectChoice = (choice) => {
+      setPlayerChoice(choice);
+      setComputerChoice(randomPlay());
+      setCountdown(3);
+      setStartGame(true);
+      setShowComputerChoice(false); // Reiniciar el estado de la elección de CPU
 
-    const playGame = () => {
-        if (playerChoice === null) {
-            setResult("Please choose your weapon.");
-            return;
-        }
+      if (playerChoice !== null) {
+          playGame();
+      }
+  };
 
-        const gameResult = determineWinner(playerChoice, computerChoice);
+  useEffect(() => {
+      if (playerChoice !== null) {
+          playGame();
+      }
+  }, [playerChoice, computerChoice]);
 
-        setResult(`Player chose: ${playerChoice}\nComputer chose: ${computerChoice}\n${gameResult}`);
-    };
+  useEffect(() => {
+      if (countdown > 0) {
+          const timer = setTimeout(() => {
+              setCountdown(countdown - 1);
+          }, 1000);
+          return () => clearTimeout(timer);
+      } else {
+          setShowComputerChoice(true); // Mostrar la elección de CPU después del contador
+      }
+  }, [countdown]);
 
-    return (
-        <div>
-            <Background/>
-            <h1>Welcome to Rock, Paper, Scissors, Fire, Ice, Air, Water!</h1>
-            
-            <div style={{ display: 'flex' }}>
-                <div style={{ flex: 1 }}>
-                    <h2>Player choice</h2>
-                    <p>{playerChoice}</p>
-                    {playerChoice && <img src={`${playerChoice}.png`} alt={playerChoice} />}
-                </div>
-                <div style={{ flex: 1 }}>
-                    <h2>CPU choice</h2>
-                    <p>{computerChoice}</p>
-                    {computerChoice && <img src={`${computerChoice}.png`} alt={computerChoice} />}
-                </div>
+  const playGame = () => {
+      if (playerChoice === null) {
+          setResult("Please choose your weapon.");
+          return;
+      }
+
+      const gameResult = determineWinner(playerChoice, computerChoice);
+      setResult(`${gameResult}`);
+  };
+  return (
+    <div>
+
+    
+    <div>
+ 
+    <Question/>
+    
+    </div>
+    <div className='choices-container'>
+                {choices.map((choice) => (
+                    <button
+                        key={choice}
+                        className={`choiceButton ${selectedChoice === choice ? 'selected' : ''}`}
+                        onClick={() => selectChoice(choice) }
+                    >
+                       <ImageWithText
+                        imageUrl={`${choice}.png`}
+                        text={choice}
+                      />
+                        
+                    </button>
+                ))}
             </div>
-            
-            <div>
-                <p>Choose your weapon:</p>
-                <div>
-                    {choices.map((choice) => (
-                        <button key={choice} onClick={() => selectChoice(choice)}>
-                            {choice}
-                        </button>
-                    ))}
-                </div>
-            </div>
-            
-            <p id="result">{result}</p>
-        </div>
-    );
-}
+    
+    </div>
+  );
+};
+
+
+export default Inicio;

@@ -104,7 +104,7 @@
 
 .tittle{
     position: absolute;
-    top: 36%;
+    top: 38%;
     left: 17.5%;
     color: var(--black, #1B1B1B);
     text-align: center;
@@ -138,33 +138,3 @@
     line-height: 86.245px; /* 127.273% */
     }
 
- /* Estilos para el contenedor de los botones */
- .choices-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-/* Estilos para los botones de elección */
-.choiceButton {
-    background-color: transparent;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-
-.choiceButton.selected {
-    background-color: #3498db;
-    color: white;
-}
-
-.choiceButton img {
-    width: 96.613px;
-    height: 92.669px;
-    margin-right: 10px;
-}

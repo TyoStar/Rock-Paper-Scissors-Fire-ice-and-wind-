@@ -1,9 +1,13 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Background } from './components/Fondo/page'
+import { Inter, Patrick_Hand_SC } from 'next/font/google'
+import { Patrick_Hand } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
+const Patrick = Patrick_Hand({
+  subsets: ['latin'],
+  weight: '400'
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
