@@ -1,4 +1,17 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+
+.vector2 {
+    left: 32%;
+    position: absolute;
+    top: 480px;
+    width: 507px;
+    height: 67px;
+    z-index: 1;
+  }
+
+
 .Resultado{
     position:absolute;
     top: 0px;
@@ -6,7 +19,7 @@
     flex-shrink: 0;
     color: var(--black, #1B1B1B);
     text-align: center;
-    font-family: Patrick_Hand;
+    font-family: 'Patrick Hand', cursive;
     font-size: 80px;
     font-style: normal;
     font-weight: 400;
@@ -20,7 +33,7 @@
     flex-shrink: 0;
     color: var(--black, #1B1B1B);
     text-align: center;
-    font-family: Patrick_Hand;
+    font-family: 'Patrick Hand', cursive;
     font-size: 70px;
     font-style: normal;
     font-weight: 400;
@@ -35,7 +48,7 @@
     flex-shrink: 0;
     color: var(--black, #1B1B1B);
     text-align: center;
-    font-family: Patrick_Hand;
+    font-family: 'Patrick Hand';
     font-size: 70px;
     font-style: normal;
     font-weight: 400;
@@ -48,7 +61,7 @@
     flex-shrink: 0;
     color: var(--black, #1B1B1B);
     text-align: center;
-    font-family: Patrick_Hand;
+    font-family: 'Patrick Hand', cursive;
     font-size: 70px;
     font-style: normal;
     font-weight: 400;
@@ -111,7 +124,7 @@
 
   .wind {
     width: 96.613px;
-    height: 92.669px;
+    height: 84.669px;
     flex-shrink: 0;
     position: absolute;
     top: 560px;
@@ -160,16 +173,82 @@
 .player {
     position:absolute;
     top: 100px;
-    left:250px;
-    width: 96.613px;
-    height: 92.669px;
+    left:220px;
+    width: 196.613px;
+    height: 192.669px;
     margin-right: 10px;
 }
 .CPU {
     position:absolute;
     top: 100px;
-    left: 250px;
-    width: 96.613px;
-    height: 92.669px;
+    left: 220px;
+    width: 196.613px;
+    height: 192.669px;
     margin-right: 10px;
+}
+.Selecciona{
+
+        position:absolute;
+        top: -12px;
+        width: 99%;
+        flex-shrink: 0;
+        color: var(--black, #1B1B1B);
+        text-align: center;
+        font-family: 'Patrick Hand', cursive;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 86.245px; /* 89.838% */
+    
+}
+
+.choice{
+
+    position:relative;
+    top: 590px;
+    left: 10px;
+    width: 99%;
+    margin-right: 40px;
+    flex-shrink: 0;
+    color: var(--black, #1B1B1B);
+    text-align: center;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 86.245px; /* 89.838% */
+
+}
+
+.playerchoice2{
+    position:relative;
+    top: 190px;
+    left: 10px;
+    width: 99%;
+    margin-right: 40px;
+    flex-shrink: 0;
+    color: var(--black, #1B1B1B);
+    text-align: center;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 86.245px; /* 89.838% */
+}
+
+.computerchoice2{
+    position:relative;
+    top: 190px;
+    left: 10px;
+    width: 99%;
+    margin-right: 40px;
+    flex-shrink: 0;
+    color: var(--black, #1B1B1B);
+    text-align: center;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 86.245px; /* 89.838% */
+
 }

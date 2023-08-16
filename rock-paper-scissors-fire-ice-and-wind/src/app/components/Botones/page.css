@@ -1,0 +1,22 @@
+.container {
+    position: relative;
+    top: 525px;
+    text-align: center;
+    margin-right: -10px;
+  }
+  
+  .imagenn {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .text {
+    top:-10px;
+    position: relative;
+    margin-top: 10px;
+    font-size: 28px;
+    left: -6px;
+    font-family: 'Patrick Hand', cursive;
+    font-style: normal;
+    font-weight: 400;
+  }
